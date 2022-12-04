@@ -15,6 +15,7 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="src/main/resources/UserMapper.xml"/>
+        <!--按照类的目录来填-->
+        <mapper resource="mappers/UserMapper.xml"/>
     </mappers>
 </configuration>

@@ -1,2 +1,10 @@
-package mappers;public interface UserMapper {
+package mappers;
+
+import pojo.User;
+
+import java.util.List;
+
+public interface UserMapper {
+
+    List<User> selectAll();
 }
