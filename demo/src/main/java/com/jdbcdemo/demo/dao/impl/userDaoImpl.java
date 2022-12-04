@@ -63,18 +63,29 @@ public class userDaoImpl implements userDao {
 
         try {
             for (Integer id : idList){
-                String sql = "select id, name, employeeId from user where id = ?";
+                String sql = "select id, name, employeeId from user where employeeId = ?";
                 PreparedStatement pre = connection.prepareStatement(sql);
+                pre.setInt(1, id);
                 ResultSet resultSet = pre.executeQuery();
 
-                while ()
+                while (resultSet.next()){
+                    String name = resultSet.getString("name");
+                    Integer employeeId = resultSet.getInt("employeeId");
+
+                    User user = new User();
+                    user.setName(name);
+                    user.setEmployeeId(employeeId);
+
+                    users.add(user);
+                }
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("query failed..");
+            return users;
         }
 
-        return null;
+        return users;
     }
 
     @Override
